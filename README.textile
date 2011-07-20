@@ -1,43 +1,39 @@
 h1. Openthought
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+OpenThought is a simple application to make remembering things easier.
 
 h2. More Information
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Have you ever had a good idea that you don't want to make too much of an effort to remember? 
+Just stick it in OpenThought to record it. OpenThought also includes a REST API to make
+clients easy to write.
 
 h2. Required Gems
 
-This application requires this gem:
+* rails, 3.0.9
+* mongoid
+* bson_ext
+* devise
 
-* "rails":http://rubygems.org/gems/rails
+At the very least
 
 h2. Dependencies
 
 To use this application, you will need:
 
-* The Ruby language (version 1.8.7 or 1.9.2)
-* Rails (version 3.0.4 or newer)
+* The Ruby language, 1.9.3 or later
+* Rails (version 3.0.9 or newer)
+* MongoDB
 
 h2. Installing the Application
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+     git clone git://github.com/indigo747/OpenThought.git 
+     bundle install
+     rails server
 
 h2. Getting Started
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Documentation and Support
-
-This is the only documentation.
-
-h4. Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Similar Projects
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Create an account, and add some thoughts!
 
 h2. Contributing
 
@@ -50,10 +46,3 @@ If you make improvements to this application, please share with others.
 
 If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I'll add a note to the README so that others can find your work.
 
-h2. Credits
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. License
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
