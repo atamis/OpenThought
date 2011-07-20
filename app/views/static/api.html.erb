@@ -10,7 +10,41 @@ and port when necessary.</p>
 and easily regenerated API token which can be found in their user edit page. You only need
 to include this authentication token as a parameter, and you are authenticated as that user.</p>
 
-<code>
-  Needs improving.
-</code>
+<div class="code">
+  curl localhost:3000/?auth_token=XXXXXXXXXXXXXXXXXXXX
+</div>
+
+<p>Thus, you authenticate. This actually sets a session cookie, but you don't have to store that, 
+you can just send the authentication token with each request. There is really only 1 resource 
+you need to worry about: thoughts. You can get a list of thoughts, make new thoughts, and delete
+thoughts. The API is a simple REST API, using the GET, POST, and DELETE "verbs". The app supports
+both XML and JSON responses. This documentation uses JSON for the examples, but where ever you see
+".json" you can replace it ".xml" and it should work just fine.</p>
+
+<p>To get a list of the current user's thoughts, </p>
+
+<div class="code">
+  GET /thoughts.json
+</div>
+
+<p>This will return an array of Thought objects encoded in JSON. Each Thought includes a unique
+ObjectId and an owner id. With the ObjectId, you can get more information on a specific thought.
+To be honest, you actually don't get any more information. If you have an id of 
+XXXXXXXXXXXXXXXXXXXXXXXX, you can get the thought with</p>
+
+<div class="code">
+  GET /thoughts/XXXXXXXXXXXXXXXXXXXXXXXX.json
+</div>
+
+<p>You can also delete a thought with</p>
+
+<div class="code">
+  DELETE /thoughts/XXXXXXXXXXXXXXXXXXXXXXXX.json
+</div>
+
+<p>Finally, you can create a new thought by POSTing {"simple_thought": "I am thinking..."} to /thoughts.json</p>
+
+<div class="code">
+  POST /thoughts.json {"simple_thought": "Insert thought here"}
+</div>
 
