@@ -7,8 +7,8 @@ class ThoughtsController < ApplicationController
     @thoughts = current_user.thoughts
 
     respond_to do |format|
-      format.html # index.html.erb
       format.xml  { render :xml => @thoughts }
+      format.json  { render :json => @thoughts }
     end
   end
 
@@ -18,8 +18,8 @@ class ThoughtsController < ApplicationController
     @thought = Thought.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
       format.xml  { render :xml => @thought }
+      format.json  { render :json => @thought }
     end
   end
 
@@ -29,8 +29,8 @@ class ThoughtsController < ApplicationController
     @thought = Thought.new
 
     respond_to do |format|
-      format.html # new.html.erb
       format.xml  { render :xml => @thought }
+      format.json { render :json => @thought }
     end
   end
 
@@ -42,16 +42,20 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    @thought = current_user.thoughts.new(params[:thought])
+    if params[:simple_thought]
+      @thought = current_user.thoughts.new(thought: params[:simple_thought])
+    else
+      @thought = current_user.thoughts.new(params[:thought])
+    end
 
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to(@thought, :notice => 'Thought was successfully created.') }
         format.xml  { render :xml => @thought, :status => :created, :location => @thought }
+        format.xml  { render :json => @thought, :status => :created, :location => @thought }
         format.js
       else
-        format.html { render :action => "new" }
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @thought.errors, :status => :unprocessable_entity }
         format.js
       end
     end
@@ -64,11 +68,11 @@ class ThoughtsController < ApplicationController
 
     respond_to do |format|
       if @thought.update_attributes(params[:thought])
-        format.html { redirect_to(@thought, :notice => 'Thought was successfully updated.') }
         format.xml  { head :ok }
+        format.json  { head :ok }
       else
-        format.html { render :action => "edit" }
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @thought.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -81,8 +85,8 @@ class ThoughtsController < ApplicationController
     @thought.destroy
 
     respond_to do |format|
-      format.html { redirect_to(thoughts_url) }
       format.xml  { head :ok }
+      format.json  { head :ok }
       format.js
     end
   end
