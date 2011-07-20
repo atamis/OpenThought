@@ -1,4 +1,8 @@
 Openthought::Application.routes.draw do
+  match "/about" =>  "static#about"
+
+  match "/api" =>  "static#api"
+
   resources :thoughts
 
   #get \"users\/show\"
