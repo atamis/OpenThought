@@ -20,3 +20,25 @@ ul.hmenu li {
   border: solid 1px #C66;
 }
 
+div#logo {
+  margin-top: 10px;
+  height: 30px;
+  text-align: center;
+}
+
+div#header {
+  border-bottom: 1px solid black;
+}
+
+div#thoughts {
+  margin-top: 10px;
+}
+
+div.thought {
+  border-bottom: 1px solid black;
+}
+
+body,html { 
+  height:100%;
+  min-height: 100%;
+}

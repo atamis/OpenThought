@@ -1,10 +1,13 @@
 Openthought::Application.routes.draw do
+  resources :thoughts
+
   #get \"users\/show\"
 
   root :to => "home#index"
 
   devise_for :users
   resources :users, :only => :show
+  resources :token_authentications, :only => [:create, :destroy]
 
 
   # The priority is based upon order of creation:
