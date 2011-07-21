@@ -7,6 +7,14 @@
       <%= stylesheet_link_tag :all %>
       <%= javascript_include_tag :defaults %>
       <%= csrf_meta_tag %>
+      <script>
+        $(function() {
+          $( "#quick_thought" ).dialog({ autoOpen: false });
+          $( "#active_quick_thought").click(function(){
+            $( "#quick_thought" ).dialog("open");
+          });
+        });
+      </script>
   </head>
   <body>
     <div class="container">
@@ -14,6 +22,10 @@
         <div class="fourcol">
           <%= render :partial => "devise/menu/login_items" %>
           <%= render :partial => "devise/menu/registration_items" %>
+          <a href="#" id="active_quick_thought">Quick Thought</a>
+          <div id="quick_thought" class="dialog">
+            <%= render partial: 'thoughts/remote_form' %>
+          </div>
         </div>
         <div class="fourcol">
           <div id="logo">

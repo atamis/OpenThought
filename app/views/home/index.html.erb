@@ -1,8 +1,4 @@
-<%= form_for Thought.new, remote: true do |f|%>
-    <%= f.text_field :thought, placeholder: ["I'm thinking...", "I don't want to forget...", "Er...", "I can't remember..."].sample %>
-    <%= f.submit %>
-<% end %>
-
+<%= render partial: 'thoughts/remote_form' %>
 <div id="thoughts">
   <% @thoughts.each do |t| %>
       <div class="thought" id="<%= t.id %>">
