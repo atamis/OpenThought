@@ -38,6 +38,15 @@
           <%= link_to 'API', '/api' %>
         </div>
       </div>
+      <div class="row" id="flashes">
+      <% flash.each do |name, msg| %>
+          <p onclick="this.fadeOut()" class="flash flash_<%= name %>">
+            <%= msg %>
+            <% if name == "alert" || name == "error" %>
+            <% end %>
+          </p>
+        <% end %>
+        </div>
 
       <div  class="row">
         <%= yield %>
