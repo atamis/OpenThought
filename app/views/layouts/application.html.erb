@@ -48,8 +48,13 @@
         <% end %>
         </div>
 
-      <div  class="row">
-        <%= yield %>
+      <div class="row">
+        <div class="tencol">
+          <%= yield %>
+        </div>
+        <div class="twocol last">
+          <%= yield :sidebar%>
+        <div>
       </div>
     </div>
 

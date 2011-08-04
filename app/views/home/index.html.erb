@@ -2,8 +2,10 @@
 <div id="thoughts">
   <% @thoughts.each do |t| %>
       <div class="thought" id="<%= t.id %>">
-        <%=h t.thought %>
-        <%= link_to 'Destroy', t, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>'delete_thought' %>
+        <p><%=markdown h(t.thought)%></p>
+        <span class="date"><%= t.created_at %></span>
+        <%= link_to 'D', t, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>'delete_thought' %>
       </div>
   <% end %>
 </div>
+

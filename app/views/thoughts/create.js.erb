@@ -1,1 +1,1 @@
-$("#thoughts").append('<div class="thought" id="<%= @thought.id %>"><%= escape_javascript @thought.thought%><%= link_to 'Destroy', @thought, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>'delete_thought' %>');
+$("#thoughts").append('<div class="thought" id="<%= @thought.id %>"><%= escape_javascript markdown(@thought.thought)%><%= link_to 'Destroy', @thought, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>'delete_thought' %>');
