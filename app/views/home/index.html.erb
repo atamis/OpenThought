@@ -1,11 +1,7 @@
 <%= render partial: 'thoughts/remote_form' %>
 <div id="thoughts">
   <% @thoughts.each do |t| %>
-      <div class="thought" id="<%= t.id %>">
-        <p><%=markdown h(t.thought)%></p>
-        <span class="date"><%= t.created_at %></span>
-        <%= link_to 'D', t, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>'delete_thought' %>
-      </div>
+    <%= render :partial => "thoughts/thought", :object => t%>
   <% end %>
 </div>
 

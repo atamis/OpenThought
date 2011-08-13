@@ -1,0 +1,6 @@
+
+<div class="thought" id="<%= thought.id %>">
+  <p><%=markdown h(thought.thought)%></p>
+  <span class="date"><%= time_ago_in_words thought.created_at %></span>
+  <%= link_to 'D', thought, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>'delete_thought' %>
+</div>
