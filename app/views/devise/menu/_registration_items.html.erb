@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
   <%= link_to('Edit account', edit_user_registration_path) %>
+  <a href="#" id="active_quick_thought">Quick Thought</a>
 <% else %>
   <%= link_to('Sign up', new_user_registration_path)  %>
 <% end %>
