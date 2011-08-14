@@ -48,12 +48,19 @@
         </div>
 
       <div class="row">
-        <div class="tencol">
-          <%= yield %>
-        </div>
-        <div class="twocol last">
-          <%= yield :sidebar%>
-        <div>
+        <% sidebar = yield :sidebar %>
+        <% if sidebar != "" %>
+          <div class="tencol">
+            <%= yield %>
+          </div>
+          <div class="twocol last">
+            <%= sidebar %>
+          </div>
+        <% else %>
+          <div class="twelvecol">
+            <%= yield %>
+          </div>
+        <% end %>
       </div>
     </div>
 
