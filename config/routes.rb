@@ -7,6 +7,10 @@ Openthought::Application.routes.draw do
 
   resources :thoughts
 
+  # Tags
+  match "/tags" => "tags#index"
+  match "/tags/:tag" => "tags#show"
+
   #get \"users\/show\"
 
   root :to => "welcome#index"

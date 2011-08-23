@@ -3,5 +3,6 @@ class HomeController < ApplicationController
   def index
     @users = User.all
     @thoughts = current_user.thoughts.desc(:updated_at)
+    @tags = Thought.all_tags(current_user)
   end
 end

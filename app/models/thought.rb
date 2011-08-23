@@ -18,6 +18,6 @@ class Thought
   end
 
   def self.all_tags(user)
-    user.thoughts.map(&:tags).flatten
+    user.thoughts.map(&:tags).flatten.uniq
   end
 end
