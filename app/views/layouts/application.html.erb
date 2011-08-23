@@ -37,7 +37,7 @@
           <%= link_to 'API', '/api' %>
         </div>
       </div>
-      <div class="row" id="flashes">
+      <div class="row" id="flashes" style="padding-top: 5px">
       <% flash.each do |name, msg| %>
           <p onclick="this.fadeOut()" class="flash flash_<%= name %>">
             <%= msg %>
@@ -61,6 +61,17 @@
             <%= yield %>
           </div>
         <% end %>
+      </div>
+
+      <div id="footer" class="row">
+        <div class="fourcol">
+        </div>
+        <div class="fourcol">
+          <a href="https://github.com/atamis/OpenThought">Fork me on Github</a>
+          <a href="http://atamis.github.com/">Website</a>
+        </div>
+        <div class="last fourcol">
+        </div>
       </div>
     </div>
 

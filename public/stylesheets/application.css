@@ -73,3 +73,9 @@ textarea {
   font-family: Monaco, Andele Mono, monospace;
   resize: none;
 }
+
+#footer {
+  margin-top: 10px;
+  border-top: 1px black solid;
+  text-align: center;
+}
