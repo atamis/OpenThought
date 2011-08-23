@@ -15,11 +15,14 @@ to include this authentication token as a parameter, and you are authenticated a
 </div>
 
 <p>Thus, you authenticate. This actually sets a session cookie, but you don't have to store that, 
-you can just send the authentication token with each request. There is really only 1 resource 
-you need to worry about: thoughts. You can get a list of thoughts, make new thoughts, and delete
-thoughts. The API is a simple REST API, using the GET, POST, and DELETE "verbs". The app supports
-both XML and JSON responses. This documentation uses JSON for the examples, but where ever you see
-".json" you can replace it ".xml" and it should work just fine.</p>
+you can just send the authentication token with each request.</p>
+
+<h2>Thoughts</h2>
+<p>There is really only 1 resource you need to worry about: thoughts. You can get a list of 
+thoughts, make new thoughts, and delete thoughts. The API is a simple REST API, using the GET,
+POST, and DELETE "verbs". The app supports both XML and JSON responses. This documentation
+uses JSON for the examples, but where ever you see ".json" you can replace it ".xml" and it
+should work just fine.</p>
 
 <p>To get a list of the current user's thoughts, </p>
 
@@ -42,9 +45,30 @@ XXXXXXXXXXXXXXXXXXXXXXXX, you can get the thought with</p>
   DELETE /thoughts/XXXXXXXXXXXXXXXXXXXXXXXX.json
 </div>
 
-<p>Finally, you can create a new thought by POSTing {"simple_thought": "I am thinking..."} to /thoughts.json</p>
+<p>Finally, you can create a new thought by POSTing {"simple_thought": "I am thinking..."} to
+/thoughts.json</p>
 
 <div class="code">
   POST /thoughts.json {"simple_thought": "Insert thought here"}
 </div>
 
+<h2>Tags</h2>
+<p>
+  Thoughts can be tagged with octothorps. When rendered, thoughts include links '/tag/:tag',
+  which lists all the thoughts tagged with that tag. OT exposes a JSON and XML api for getting
+  tags and their associated thoughts.
+</p>
+
+<p>You can get a list of tags:</p>
+
+<div class="code">
+  GET /tags.json
+</div>
+
+<p>You can a list of thoughts tagged with a tag like so:</p>
+
+<div class="code">
+  GET /tags/:tag.json
+</div>
+
+The thought list is formatted in the same way as '/thoughts'.
