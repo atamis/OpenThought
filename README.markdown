@@ -1,14 +1,17 @@
-h1. Openthought
+Openthought
+===========
 
 OpenThought is a simple application to make remembering things easier.
 
-h2. More Information
+More Information
+----------------
 
 Have you ever had a good idea that you don't want to make too much of an effort to remember? 
 Just stick it in OpenThought to record it. OpenThought also includes a REST API to make
 clients easy to write.
 
-h2. Required Gems
+Required Gems
+-------------
 
 * rails, 3.0.9
 * mongoid
@@ -17,7 +20,8 @@ h2. Required Gems
 
 At the very least
 
-h2. Dependencies
+Dependencies
+------------
 
 To use this application, you will need:
 
@@ -25,17 +29,21 @@ To use this application, you will need:
 * Rails (version 3.0.9 or newer)
 * MongoDB
 
-h2. Installing the Application
+Installing the Application
+--------------------------
 
-     git clone git://github.com/indigo747/OpenThought.git 
+     git clone git://github.com/atamis/OpenThought.git 
      bundle install
      rails server
 
-h2. Getting Started
+
+Getting Started
+---------------
 
 Create an account, and add some thoughts!
 
-h2. Contributing
+Contributing
+------------
 
 If you make improvements to this application, please share with others.
 
