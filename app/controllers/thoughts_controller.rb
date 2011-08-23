@@ -9,6 +9,7 @@ class ThoughtsController < ApplicationController
     respond_to do |format|
       format.xml  { render :xml => @thoughts }
       format.json  { render :json => @thoughts }
+      format.text  { render :text => @thoughts.map { |x| x.thought }.join("\n") }
     end
   end
 
@@ -20,6 +21,7 @@ class ThoughtsController < ApplicationController
     respond_to do |format|
       format.xml  { render :xml => @thought }
       format.json  { render :json => @thought }
+      format.text { render :text => @thought.thought }
     end
   end
 

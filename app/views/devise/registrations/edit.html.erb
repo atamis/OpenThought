@@ -36,4 +36,11 @@
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
 
+<h3>Export</h3>
+<p>
+  <a href="/thoughts.json">JSON</a>
+  <a href="/thoughts.xml">XML</a>
+  <a href="/thoughts.txt">text</a>
+<p>
+
 <%= link_to "Back", :back %>
