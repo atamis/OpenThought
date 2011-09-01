@@ -12,9 +12,9 @@
 <% content_for :sidebar do %>
   <a href="/dashboard">All</a>
   <div style="border-top: 1px grey dashed; margin: 5px;"></div>
-  <% @tags.each do |t| %>
+  <% @tags.each do |tag, number| %>
     <p>
-    <%= render :partial => "tags/tag", :object => t %>
+      <%= link_to tag + ": " + number.to_s, '/tags/' + tag %>
     </p>
   <% end %>
 <% end %>
