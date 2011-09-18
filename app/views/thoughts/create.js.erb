@@ -1,2 +1,7 @@
-$("#thoughts").prepend('<%= escape_javascript render(:partial => "thoughts/thought", :object => @thought )%> ');
-$(".new_thought textarea").val("");
+<% if @thought.errors.length > 0 %>
+  $(".new_thought .errors").html("No thought.").fadeIn("slow").delay(1000).fadeOut("slow");
+<% else %>
+  $("#thoughts").prepend('<%= escape_javascript render(:partial => "thoughts/thought", :object => @thought )%> ');
+  $("#<%= @thought.id %>").effect("highlight", {}, 3000)
+  $(".new_thought textarea").val("");
+<% end %>
