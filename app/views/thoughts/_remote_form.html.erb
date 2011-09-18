@@ -2,7 +2,7 @@
   <div class="tags">
     <% @tags.each do |tag, weight| %>
       <a href="#" id="<%= tag %>"><%= tag %></a>
-    <% end %>
+    <% end if @tags %>
   </div>
   <%= f.text_area :thought, placeholder: ["I'm thinking...", "I don't want to forget...", "Er...", "I can't remember..."].sample %>
   <br/>
