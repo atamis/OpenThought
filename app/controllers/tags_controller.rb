@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   before_filter :authenticate_user!
   def index
-    @tags = Thought.weighted_tags(current_user)
+    @tags = Thought.weighted_tags(current_user).sort
 
     respond_to do |format|
       format.html
@@ -15,7 +15,7 @@ class TagsController < ApplicationController
     @thoughts = Thought.thoughts_for params[:tag], current_user
 
     respond_to do |format|
-      @tags = Thought.weighted_tags current_user
+      @tags = Thought.weighted_tags(current_user).sort
       format.html do 
         render "home/index"
       end
