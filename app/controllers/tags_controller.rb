@@ -12,7 +12,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @thoughts = Thought.thoughts_for params[:tag], current_user
+    @thoughts = current_user.thoughts.any_in(:tags => [params[:tag]]).desc(:updated_at)
 
     respond_to do |format|
       @tags = Thought.weighted_tags(current_user).sort
