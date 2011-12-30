@@ -1,0 +1,1 @@
+rvm --create --rvmrc gemset use openthought
