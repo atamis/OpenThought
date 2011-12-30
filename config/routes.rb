@@ -1,4 +1,9 @@
 Openthought::Application.routes.draw do
+  get "/thoughts" => "thoughts#index"
+  post "/thoughts" => "thoughts#create"
+  get "/thoughts/:id" => "thoughts#show"
+  delete "/thoughts/:id" => "thoughts#destroy"
+
   devise_for :users
 
   get "home/index"
