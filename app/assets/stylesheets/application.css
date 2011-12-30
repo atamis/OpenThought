@@ -1,3 +1,11 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
 
 ul.hmenu {
   list-style: none;
@@ -35,10 +43,10 @@ div#thoughts {
 }
 
 div.thought {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-left: 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
 }
 span.date {
   color: #555555;
