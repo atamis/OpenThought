@@ -1,86 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Openthought</title>
-      <!-- 1140px Grid styles for IE -->
-      <!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie.css" type="text/css" media="screen" /><![endif]-->
-      <%= stylesheet_link_tag    "application" %>
-      <%= javascript_include_tag "application" %>
-      <%= csrf_meta_tag %>
-      <script>
-        $(function() {
-          $( "#quick_thought" ).dialog({ autoOpen: false });
-          $( "#active_quick_thought").click(function(){
-            $( "#quick_thought" ).dialog("open");
-          });
-        });
-      </script>
-  </head>
-  <body>
-    <div class="container">
-      <div id="header" class="row">
-        <div class="fourcol">
-          <%= render :partial => "devise/menu/login_items" %>
-          <%= render :partial => "devise/menu/registration_items" %>
-          <div id="quick_thought" class="dialog">
-            <%= render partial: 'thoughts/remote_form' %>
-          </div>
-        </div>
-        <div class="fourcol">
-          <div id="logo">
-              <h1>OpenThought</h1>
-          </div>
-        </div>
-        <div class="fourcol last" style="text-align: right;">
-          <%= link_to "Home", '/' %><br />
-          <%= link_to "About", '/about'%><br />
-          <%= link_to 'API', '/api' %>
-        </div>
-      </div>
-      <div class="row" id="flashes" style="padding-top: 5px">
-      <% flash.each do |name, msg| %>
-          <p onclick="this.fadeOut()" class="flash flash_<%= name %>">
-            <%= msg %>
-            <% if name == "alert" || name == "error" %>
-            <% end %>
-          </p>
-        <% end %>
-        </div>
+<head>
+  <title>Openthought</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-      <div class="row">
-        <% sidebar = yield :sidebar %>
-        <% if sidebar != "" %>
-          <div class="tencol">
-            <%= yield %>
-          </div>
-          <div class="twocol last">
-            <%= sidebar %>
-          </div>
-        <% else %>
-          <div class="twelvecol">
-            <%= yield %>
-          </div>
-        <% end %>
-      </div>
+<%= yield %>
 
-      <div id="footer" class="row">
-        <div class="fourcol">
-        </div>
-        <div class="fourcol">
-          <a href="https://github.com/atamis/OpenThought">Fork me on Github</a>
-          <a href="http://atamis.github.com/">Website</a>
-        </div>
-        <div class="last fourcol">
-        </div>
-      </div>
-    </div>
-
-    <script type="text/javascript">
-      $(".new_thought .tags a").click(function() {
-        console.log($(this))
-        $(this).parent().parent().find("textarea").insertAtCaret("#"+$(this).html());
-      })
-      <%= yield :script %>
-    </script>
-  </body>
+</body>
 </html>

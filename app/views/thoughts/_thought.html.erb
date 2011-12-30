@@ -1,7 +1,0 @@
-
-<div class="thought" id="<%= thought.id %>">
-  <p><%= raw markdown(h(thought.thought.gsub("#", "&*"))).gsub("&amp;*", "#")
-  .gsub(/#([a-zA-Z]+)/) { |tag| render(:partial => "tags/tag", :object => tag.gsub('#', '')) } %></p>
-  <span class="date"><%= time_ago_in_words thought.created_at %></span>
-  <%= link_to 'D', thought, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>'delete_thought' %>
-</div>
