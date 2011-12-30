@@ -16,6 +16,15 @@
           <li><%= link_to "Link2", "/path2"  %></li>
           <li><%= link_to "Link3", "/path3"  %></li>
         </ul>
+        <ul class="nav secondary-nav">
+          <% if user_signed_in? %>
+            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign up", new_user_registration_path %> </li>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
@@ -23,21 +32,23 @@
     <div class="content">
       <div class="row">
         <div class="span11">
-           <p class="notice"><%= notice %></p>
-           <p class="alert"><%= alert %></p>
+          <% if notice %>
+            <div class="alert-message success">
+              <a class="close" href="#">×</a>
+              <p class="notice"><%= notice %></p>
+            </div>
+          <% end %>
+          <% if  alert %>
+            <div class="alert-message warning">
+              <a class="close" href="#">×</a>
+              <p class="notice"><%= alert %></p>
+            </div>
+          <% end %>
           <%= yield %>
         </div>
         <div class="span1">&nbsp;</div>
         <div class="span4">
           <h3>Sidebar</h3>
-            <div id="user_nav">
-              <% if user_signed_in? %>
-                Signed in as <%= link_to current_user.email, edit_user_registration_path %>. Not you?
-                <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-              <% else %>
-                <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-              <% end %>
-            </div>
           <ul>
             <li><%= link_to "Link1", "/path1"  %></li>
             <li><%= link_to "Link2", "/path2"  %></li>
