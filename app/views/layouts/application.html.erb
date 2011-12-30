@@ -23,11 +23,21 @@
     <div class="content">
       <div class="row">
         <div class="span11">
+           <p class="notice"><%= notice %></p>
+           <p class="alert"><%= alert %></p>
           <%= yield %>
         </div>
         <div class="span1">&nbsp;</div>
         <div class="span4">
           <h3>Sidebar</h3>
+            <div id="user_nav">
+              <% if user_signed_in? %>
+                Signed in as <%= link_to current_user.email, edit_user_registration_path %>. Not you?
+                <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+              <% end %>
+            </div>
           <ul>
             <li><%= link_to "Link1", "/path1"  %></li>
             <li><%= link_to "Link2", "/path2"  %></li>
