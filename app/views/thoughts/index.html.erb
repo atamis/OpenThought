@@ -1,12 +1,7 @@
 <h1>Thoughts</h1>
 
-<table class="zebra-striped">
-  <% @thoughts.each do |thought| %>
-    <tr>
-      <td>
-        <%= render :partial => "thought", :locals => {:thought => thought } %>
-      </td>
-    </tr>
-  <% end %>
+<%= render :partial => "remote_form" %>
+
+<table class="zebra-striped" id="thoughts">
 </table>
 

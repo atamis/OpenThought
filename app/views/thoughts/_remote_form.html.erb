@@ -1,0 +1,26 @@
+<div id="remote_form">
+  <textarea></textarea>
+  <a class="btn primary" id="button">Submit</a>
+</div>
+
+<script type="text/javascript">
+
+$("#remote_form #button").click(
+    function() {
+      console.log("Click!!");
+      create_thought(
+        $("#remote_form textarea").val(),
+        function(body, status) {
+          console.log(body);
+          add_thought("#thoughts", body);
+        }
+      );
+    }
+)
+
+$(function() {
+    populate_table("#thoughts")
+});
+
+
+</script>
