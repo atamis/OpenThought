@@ -7,6 +7,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require smoke.min
+//= jquery.pretty_date
+//= timeago
 //= require main
 //= require_tree .
 

@@ -13,14 +13,18 @@ $("#remote_form #button").click(
         function(body, status) {
           console.log(body);
           add_thought("#thoughts", body);
+          $("#remote_form textarea").val("");
         }
       );
     }
 )
 
 $(function() {
-    populate_table("#thoughts")
-});
+  populate_table("#thoughts", function() {
+    enable_delete("#thoughts .delete")
+    $("abbr.timeago").timeago();
+  });
+})
 
 
 </script>
