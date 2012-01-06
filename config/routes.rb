@@ -1,4 +1,7 @@
 Openthought::Application.routes.draw do
+  get "tags" => "tags#index"
+  get "tags/:tag" => "tags#show"
+
   get "/thoughts" => "thoughts#index"
   post "/thoughts" => "thoughts#create"
   get "/thoughts/:id" => "thoughts#show"
