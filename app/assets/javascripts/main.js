@@ -1,9 +1,13 @@
 var render_thought = function(thought) {
-    return '<tr id="' + thought.id +
-      '"><td>' + thought.body +
-      '<a href="#" class="delete">D</a><span>' +
-      thought.created_at
-      + '</span></td></tr>';
+  var body = thought.body.replace(/#([a-zA-Z]+)/g, function(match) {
+    var tag = match.substr(1)
+    return '<a href="/tags/' + tag + '">' + tag + '</a>';
+  });
+  return '<tr id="' + thought.id +
+    '"><td>' + body +
+    '<a href="#" class="delete">D</a><span>' +
+    thought.created_at
+    + '</span></td></tr>';
 }
 var create_thought = function(body, callback) {
   $.post(
@@ -16,7 +20,7 @@ var create_thought = function(body, callback) {
 var add_thought = function(selector, thought) {
   $(selector).prepend(render_thought(thought));
   $("#"+thought.id + " a").hide().fadeIn("slow");
-  enable_delete("#"+thought.id + " a");
+  enable_delete("#"+thought.id + " a.delete");
 }
 
 var enable_delete = function(selector) {
