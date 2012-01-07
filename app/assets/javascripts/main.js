@@ -66,8 +66,8 @@ var render_tag = function(tag) {
 }
 
 var populate_tags = function(selector) {
-  $(selector).append('<p><a href="/thoughts">All</a></p>');
   $.get('/tags.json', function(body) {
+    $(selector).append('<p><a href="/thoughts">All</a></p>');
     for (i in body) {
       $(selector).append('<p>' + render_tag(body[i])
                         + '</p>');
