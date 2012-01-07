@@ -4,7 +4,7 @@ var render_thought = function(thought) {
     return '<a href="/tags/' + tag + '">' + tag + '</a>';
   });
   return '<tr id="' + thought.id +
-    '"><td>' + body +
+    '"><td>' + body.replace("\n", "\n<br />") +
     '<a href="#" class="delete">D</a><span class="date">' +
     thought.created_at
     + '</span></td></tr>';
