@@ -33,11 +33,6 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-# install a Javascript runtime for linux
-if HOST_OS =~ /linux/i
-  gem 'therubyracer', '>= 0.9.8'
-end
-
 gem "rspec-rails", ">= 2.8.0.rc1", :group => [:development, :test]
 gem "factory_girl_rails", ">= 1.4.0", :group => :test
 gem "devise", ">= 1.5.0"
