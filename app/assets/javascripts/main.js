@@ -3,9 +3,8 @@ var render_thought = function(thought) {
       var tag = match.substr(1)
       return '<a href="/tags/' + tag + '">' + tag + '</a>';
   });
-  console.log(body);
   return '<tr id="' + thought.id +
-    '"><td><p>' + body.replace(/\n([ \t]*\n)+/g, '</p><p>') +
+    '"><td><p>' + body.replace(/\n([ \t]*\n)+/g, '<br />') +
     '</p><a href="#" class="delete">D</a><span class="date">' +
     thought.created_at
     + '</span></td></tr>';
@@ -16,6 +15,10 @@ var create_thought = function(body, callback) {
     body,
     function(body, status) { callback(body); }
   )
+}
+
+var get_thought = function(id, callback) {
+  $.get('/thoughts/' + id + '.json', callback);
 }
 
 var add_thought = function(selector, thought) {
