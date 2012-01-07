@@ -21,4 +21,4 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   end
 end
 
-ActionView::Base.default_form_builder = BootstrapFormBuilder
+#ActionView::Base.default_form_builder = BootstrapFormBuilder
