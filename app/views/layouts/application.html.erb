@@ -6,16 +6,11 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body style="padding-top: 60px">
+<body style="padding-top: 40px">
   <div class="topbar">
     <div class="topbar-inner">
       <div class="container">
         <h3><%= link_to "Openthought", "/" %></h3>
-        <ul class="nav">
-          <li><%= link_to "Link1", "/path1"  %></li>
-          <li><%= link_to "Link2", "/path2"  %></li>
-          <li><%= link_to "Link3", "/path3"  %></li>
-        </ul>
         <ul class="nav secondary-nav">
           <% if user_signed_in? %>
             <li><%= link_to current_user.email, edit_user_registration_path %></li>
@@ -31,7 +26,7 @@
   <div class="container">
     <div class="content">
       <div class="row">
-        <div class="span11">
+        <div class="span10">
           <% if notice %>
             <div class="alert-message success">
               <a class="close" href="#">×</a>
@@ -52,6 +47,13 @@
         </div>
       </div>
     </div>
+    <footer>
+      <p>
+        <a href="http://ata.mit-license.org/">License</a>
+        &nbsp;
+        <a href="https://github.com/atamis/openthought">Github</a>
+      </p>
+    </footer>
   </div>
 </body>
 </html>
