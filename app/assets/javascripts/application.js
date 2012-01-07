@@ -8,8 +8,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require smoke.min
-//= jquery.pretty_date
-//= timeago
+//= jquery.linkify
 //= require main
 //= require_tree .
 

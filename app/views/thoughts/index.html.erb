@@ -10,11 +10,9 @@
 <% end %>
 
 <script type="text/javascript">
-$(function() {
   populate_table("#thoughts", '/thoughts.json', function() {
     enable_delete("#thoughts .delete")
   });
 
   populate_tags("#tags");
-})
 </script>

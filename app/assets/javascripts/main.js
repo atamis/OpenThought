@@ -5,7 +5,7 @@ var render_thought = function(thought) {
   });
   return '<tr id="' + thought.id +
     '"><td>' + body +
-    '<a href="#" class="delete">D</a><span>' +
+    '<a href="#" class="delete">D</a><span class="date">' +
     thought.created_at
     + '</span></td></tr>';
 }
@@ -51,6 +51,11 @@ var populate_table = function(selector, url, callback) {
     for(i in body) {
       add_thought(selector, body[i]);
     }
+    $(selector).linkify({
+      handleLinks: function(links) {
+        links.attr({ target: "_blank" });
+      }
+    });
     callback();
   })
 }
