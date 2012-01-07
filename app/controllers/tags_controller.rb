@@ -12,6 +12,7 @@ class TagsController < ApplicationController
     @thoughts = current_user.thoughts.tagged_with(params[:tag])
 
     respond_to do |format|
+      format.html
       format.json { render :json => @thoughts }
       format.xml { render :xml => @thoughts }
     end

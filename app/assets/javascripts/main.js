@@ -46,8 +46,8 @@ var enable_delete = function(selector) {
   });
 }
 
-var populate_table = function(selector, callback) {
-  $.get('/thoughts.json', function(body) {
+var populate_table = function(selector, url, callback) {
+  $.get(url, function(body) {
     for(i in body) {
       add_thought(selector, body[i]);
     }
@@ -55,4 +55,18 @@ var populate_table = function(selector, callback) {
   })
 }
 
+var render_tag = function(tag) {
+  return '<a href="/tags/' + tag.name + '">'
+  + tag.name + ': '+ tag.count + '</a>';
+}
+
+var populate_tags = function(selector) {
+  $(selector).append('<p><a href="/thoughts">All</a></p>');
+  $.get('/tags.json', function(body) {
+    for (i in body) {
+      $(selector).append('<p>' + render_tag(body[i])
+                        + '</p>');
+    }
+  });
+}
 

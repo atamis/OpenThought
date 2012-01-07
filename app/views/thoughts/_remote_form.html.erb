@@ -1,11 +1,14 @@
-<div id="remote_form">
-  <textarea></textarea>
-  <a class="btn primary" id="button">Submit</a>
-</div>
+<% content_for :sidebar do %>
+  <div id="remote_form">
+    <textarea rows="8"></textarea>
+    <a class="btn primary" id="button">Submit</a>
+  </div>
+<% end %>
 
 <script type="text/javascript">
 
-$("#remote_form #button").click(
+$(function() {
+  $("#remote_form #button").click(
     function() {
       console.log("Click!!");
       create_thought(
@@ -17,13 +20,7 @@ $("#remote_form #button").click(
         }
       );
     }
-)
-
-$(function() {
-  populate_table("#thoughts", function() {
-    enable_delete("#thoughts .delete")
-  });
-})
-
+)})
 
 </script>
+
