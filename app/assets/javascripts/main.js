@@ -1,11 +1,12 @@
 var render_thought = function(thought) {
   var body = thought.body.replace(/#([a-zA-Z]+)/g, function(match) {
-    var tag = match.substr(1)
-    return '<a href="/tags/' + tag + '">' + tag + '</a>';
+      var tag = match.substr(1)
+      return '<a href="/tags/' + tag + '">' + tag + '</a>';
   });
+  console.log(body);
   return '<tr id="' + thought.id +
-    '"><td>' + body.replace("\n", "\n<br />") +
-    '<a href="#" class="delete">D</a><span class="date">' +
+    '"><td><p>' + body.replace(/\n([ \t]*\n)+/g, '</p><p>') +
+    '</p><a href="#" class="delete">D</a><span class="date">' +
     thought.created_at
     + '</span></td></tr>';
 }
