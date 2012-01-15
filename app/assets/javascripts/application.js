@@ -9,6 +9,7 @@
 //= require twitter/bootstrap
 //= require smoke.min
 //= jquery.linkify
+//= marked
 //= require main
 //= require_tree .
 
