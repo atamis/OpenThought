@@ -1,11 +1,12 @@
+
 var render_thought = function(thought) {
   var body = thought.body.replace(/#([a-zA-Z]+)/g, function(match) {
       var tag = match.substr(1)
-      return '<a href="/tags/' + tag + '">' + tag + '</a>';
+      return '<a class="tag" href="/tags/' + tag + '">' + tag + '</a>';
   });
   return '<tr id="' + thought.id +
-    '"><td>' + marked(body.replace(/\n/g, "\n\n")) +
-    '<a href="#" class="delete">D</a><span class="date">' +
+    '"><td><div class="thought_text">' + marked(body.replace(/\n/g, "\n\n")) +
+    '</div><a href="#" class="delete">D</a><span class="date">' +
     thought.created_at
     + '</span></td></tr>';
 }
@@ -50,16 +51,27 @@ var enable_delete = function(selector) {
   });
 }
 
+var trunc = function(str, n){
+  return str.substr(0,n-1)+(str.length>n?'...':'');
+};
+
 var populate_table = function(selector, url, callback) {
+  console.log('hi');
   $.get(url, function(body) {
     for(i in body) {
       add_thought(selector, body[i]);
     }
-    $(selector).linkify({
+    $(".thought_text a:not(.tag)").each(function(i, el) { $(el).text(trunc($(el).text(), 25)) })
+    /*$(selector).linkify({
       handleLinks: function(links) {
+        console.log(links);
         links.attr({ target: "_blank" });
+      },
+      changeName: function(name) {
+        console.log(name);
+        return "test";
       }
-    });
+    });*/
     callback();
   })
 }
