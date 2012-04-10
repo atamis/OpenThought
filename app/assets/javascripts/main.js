@@ -61,7 +61,7 @@ var populate_table = function(selector, url, callback) {
     for(i in body) {
       add_thought(selector, body[i]);
     }
-    $(".thought_text a:not(.tag)").each(function(i, el) { $(el).text(trunc($(el).text(), 25)) })
+    $(".thought_text a:not(.tag)").each(function(i, el) { $(el).text(trunc($(el).text(), 80)) })
     /*$(selector).linkify({
       handleLinks: function(links) {
         console.log(links);
