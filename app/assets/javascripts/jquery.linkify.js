@@ -69,14 +69,20 @@
 
 (function($){
 
-  var noProtocolUrl = /(^|["'(\s]|&lt;)(www\..+?\..+?)((?:[:?]|\.+)?(?:\s|$)|&gt;|[)"',])/g,
+  var noProtocolUrl = /(^|["'(\s]|&lt)(www\..+?\..+?)((?:[:?]|\.+)?(?:\s|$)|&gt;|[)"',])/g,
       httpOrMailtoUrl = /(^|["'(\s]|&lt;)((?:(?:https?|ftp):\/\/|mailto:).+?)((?:[:?]|\.+)?(?:\s|$)|&gt;|[)"',])/g,
-      linkifier = function ( html ) {
-          return html
-                      .replace( noProtocolUrl, '$1<a href="<``>://$2">$2</a>$3' )  // NOTE: we escape `"http` as `"<``>` to make sure `httpOrMailtoUrl` below doesn't find it as a false-positive
-                      .replace( httpOrMailtoUrl, '$1<a href="$2">$2</a>$3' )
+      linkifier = function ( html, name_mangler ) {
+        html = html
+                      .replace( noProtocolUrl, function(str, p1, p2, p3, offset, s) {
+                          return p1 + '<a href="<``>' + p2 + '">' + "test" + "</a>" + p3;
+                        })//'$1<a href="<``>://$2">$2</a>$3' )  // NOTE: we escape `"http` as `"<``>` to make sure `httpOrMailtoUrl` below doesn't find it as a false-positive
+                      .replace( httpOrMailtoUrl, function(str, p1, p2, p3, offset, s) {
+                          return p1 + '<a href="' + p2 + '">' + "test" + "</a>" + p3;
+                        })// '$1<a href="$2">$2</a>$3' )
                       .replace( /"<``>/g, '"http' );  // reinsert `"http`
-        },
+        console.log(html);
+        return html;
+      },
 
 
       linkify = $.fn.linkify = function ( cfg ) {
@@ -84,7 +90,8 @@
           {
             cfg = {
                 use:         (typeof cfg == 'string') ? cfg : undefined,
-                handleLinks: $.isFunction(cfg) ? cfg : arguments[1]
+                handleLinks: $.isFunction(cfg) ? cfg : arguments[1],
+                changeName: function(x) { return x }
               };
           }
           var use = cfg.use,
@@ -92,6 +99,7 @@
               plugins = [linkifier],
               tmpCont,
               newLinks = [],
+              change_name = cfg.changeName,
               callback = cfg.handleLinks;
           if ( use == undefined ||  use == '*' ) // use === undefined  ||  use === null
           {
@@ -152,7 +160,7 @@
                                       .replace( /</g, '&lt;' )
                                       .replace( />/g, '&gt;' );
                             html = $.isFunction( plugin ) ? 
-                                        plugin( html ):
+                                        plugin( html, change_name):
                                         html.replace( plugin.re, plugin.tmpl );
                             htmlChanged = htmlChanged || preHtml!=html;
                             preHtml!=html  &&  $(tmpNode).after(html).remove();
@@ -177,7 +185,7 @@
                 }
               };
           });
-          callback  &&  callback( $(newLinks.reverse()) );
+          callback  &&  callback( $(newLinks) );
           return this;
         };
 
