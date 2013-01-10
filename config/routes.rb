@@ -1,4 +1,17 @@
 Openthought::Application.routes.draw do
+  get "tags" => "tags#index"
+  get "tags/:tag" => "tags#show"
+
+  get "/thoughts" => "thoughts#index"
+  post "/thoughts" => "thoughts#create"
+  get "/thoughts/:id" => "thoughts#show"
+  delete "/thoughts/:id" => "thoughts#destroy"
+
+  devise_for :users
+
+  get "home/index"
+  root :to => "home#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
