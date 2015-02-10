@@ -42,7 +42,6 @@ gem 'jquery-rails'
 gem "rspec-rails", ">= 2.8.0.rc1", :group => [:development, :test]
 gem "factory_girl_rails", ">= 1.4.0", :group => :test
 gem "devise", "1.5.3"
-gem "twitter-bootstrap-rails"
 gem "rails-footnotes", ">= 3.7", :group => :development
 gem 'acts-as-taggable-on', '~>2.2.0'
 gem "heroku"

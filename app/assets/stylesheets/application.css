@@ -4,3 +4,19 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_tree .
  */
+#thoughts .delete {
+  float: right;
+}
+#thoughts .date {
+  float: right;
+}
+
+html, body {
+  background-color: #fff;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+tbody {
+}
+
