@@ -12,7 +12,13 @@ class Thought < ActiveRecord::Base
   end
 
   def markdown
-    x = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolinks: true)
+
+    options = {
+      autolink: true,
+      no_intra_emphasis: true
+    }
+    renderer = Redcarpet::Render::HTML
+    x = Redcarpet::Markdown.new(renderer, options)
     text = self.body.gsub(/#[a-zA-Z]+/) do |tag|
       "<a href=\"/tags/#{tag.gsub("#", '')}\">#{tag}</a>"
     end
