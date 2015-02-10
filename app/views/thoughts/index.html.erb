@@ -1,8 +1,6 @@
 <div>
 <h1>Thoughts</h1>
 
-<%= render :partial => "remote_form" %>
-
 <table class="table-striped" id="thoughts">
   <% @thoughts.each do |thought|%>
     <tr id=<%= thought.id %>>
@@ -10,7 +8,7 @@
         <div class="thought_text">
           <%= raw thought.markdown%>
         </div>
-        <a href="#" class="delete">D</a>
+        <%= link_to "D", "/thoughts/" + thought.id.to_s, method: :delete, class: "delete", data: {confirm: "Are you sure?"}%>
         <span class="date">
           <%= thought.created_at %>
         </span>
@@ -20,6 +18,11 @@
 </table>
 
 <% content_for :sidebar do %>
+  <%= form_for @new_thought do |f| %>
+    <%= f.text_area :body, rows: 8, cols: 20 %>
+    <%= f.submit :submit, class: "btn primary"%>
+  <% end %>
+  <!-- asdfasdf -->
   <div id="tags"></div>
 <% end %>
 

@@ -8,6 +8,7 @@ class ThoughtsController < ApplicationController
 
   def index
     @thoughts = current_user.thoughts.order("created_at DESC")
+    @new_thought = Thought.new
 
     respond_to do |format|
       format.html
@@ -26,12 +27,14 @@ class ThoughtsController < ApplicationController
   end
 
   def create
-    @thought = Thought.new
-    @thought.body = request.body.read
+    #@thought = Thought.new
+    #@thought.body = request.body.read
+    #@thought.user_id = current_user.id
+    @thought = Thought.new(params[:thought])
     @thought.user_id = current_user.id
-
     respond_to do |format|
       if @thought.save
+        format.html { redirect_to Rails.application.routes.url_helpers.thoughts_path }
         format.json	{ render :json => @thought, :status => :created }
         format.xml	{ render :xml => @htought, :status => :created }
       else
@@ -46,6 +49,7 @@ class ThoughtsController < ApplicationController
     @thought.destroy
 
     respond_to do |format|
+      format.html {redirect_to Rails.application.routes.url_helpers.thoughts_path}
       format.json { head :ok }
       format.xml { head :ok }
     end

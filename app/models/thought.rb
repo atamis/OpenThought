@@ -11,7 +11,7 @@ class Thought < ActiveRecord::Base
     self.tag_list = x.join(', ') unless x == []
   end
 
-  def markdown(&block)
+  def markdown
     x = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolinks: true)
     text = self.body.gsub(/#[a-zA-Z]+/) do |tag|
       "<a href=\"/tags/#{tag.gsub("#", '')}\">#{tag}</a>"
