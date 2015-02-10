@@ -7,7 +7,7 @@ class ThoughtsController < ApplicationController
   end
 
   def index
-    @thoughts = current_user.thoughts
+    @thoughts = current_user.thoughts.order("created_at DESC")
 
     respond_to do |format|
       format.html
