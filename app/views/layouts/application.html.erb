@@ -7,26 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body style="padding-top: 40px">
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="container">
-        <h3><%= link_to "Openthought", "/" %></h3>
-        <ul class="nav secondary-nav">
-          <% if user_signed_in? %>
-            <li><%= link_to current_user.email, edit_user_registration_path %></li>
-            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-          <% else %>
-            <li><%= link_to "Sign up", new_user_registration_path %> </li>
-            <li><%= link_to "Sign in", new_user_session_path %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
   <div class="container">
-    <div class="content">
+
       <div class="row">
-        <div class="span10">
+        <div class="col-md-2">
+            <h3>
+              <%= link_to "Openthought", "/", class: "navbar-brand"%>
+            </h3>
+            <% if user_signed_in? %>
+              <%= link_to current_user.email, edit_user_registration_path, class: "btn" %>
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "btn"%>
+          <% else %>
+              <%= link_to "Sign up", new_user_registration_path, class: "btn" %>
+            <%= link_to "Sign in", new_user_session_path, class: "btn" %>
+          <% end %>
+          <%= yield :sidebar %>
+        </div>
+        <div class="col-md-10">
           <% if notice %>
             <div class="alert-message success">
               <a class="close" href="#">×</a>
@@ -41,12 +38,7 @@
           <% end %>
           <%= yield %>
         </div>
-        <div class="span1">&nbsp;</div>
-        <div class="span4">
-          <%= yield :sidebar %>
-        </div>
       </div>
-    </div>
     <footer>
       <p>
         <a href="http://ata.mit-license.org/">License</a>
