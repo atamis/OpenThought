@@ -7,4 +7,9 @@
 
 html, body {
   background-color: #fff;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+tbody {
 }
