@@ -2,6 +2,7 @@ require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 
 source 'http://rubygems.org'
+ruby "1.9.3"
 
 gem 'rails', '3.1.10'
 
