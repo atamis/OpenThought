@@ -12,16 +12,17 @@ class Thought < ActiveRecord::Base
   end
 
   def markdown
-
-    options = {
-      autolink: true,
-      no_intra_emphasis: true
-    }
-    renderer = Redcarpet::Render::HTML
-    x = Redcarpet::Markdown.new(renderer, options)
-    text = self.body.gsub(/#[a-zA-Z]+/) do |tag|
-      "<a href=\"/tags/#{tag.gsub("#", '')}\">#{tag}</a>"
+    Rails.cache.fetch("#{cache_key}/markdown", expires_in: 12.hours) do
+      options = {
+        autolink: true,
+        no_intra_emphasis: true
+      }
+      renderer = Redcarpet::Render::HTML
+      x = Redcarpet::Markdown.new(renderer, options)
+      text = self.body.gsub(/#[a-zA-Z]+/) do |tag|
+        "<a href=\"/tags/#{tag.gsub("#", '')}\">#{tag}</a>"
+      end
+      x.render text
     end
-    x.render text
   end
 end
