@@ -48,3 +48,4 @@ gem "heroku"
 gem 'thin'
 gem 'foreman'
 gem 'redcarpet'
+gem 'kaminari'

@@ -7,7 +7,7 @@ class ThoughtsController < ApplicationController
   end
 
   def index
-    @thoughts = current_user.thoughts.order("created_at DESC")
+    @thoughts = current_user.thoughts.order("created_at DESC").page(params[:page])
     @new_thought = Thought.new
 
     respond_to do |format|

@@ -17,6 +17,8 @@
   <% end %>
 </table>
 
+<%= paginate @thoughts %>
+
 <% content_for :sidebar do %>
   <%= form_for @new_thought do |f| %>
     <%= f.text_area :body, rows: 8, cols: 20 %>
