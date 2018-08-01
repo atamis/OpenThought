@@ -2,9 +2,9 @@ require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 
 source 'http://rubygems.org'
-ruby "1.9.3"
+ruby "2.0.0"
 
-gem 'rails', '3.1.10'
+gem 'rails', '4.1.11'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -20,12 +20,12 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.5'
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'sass-rails', '~> 4.0', '>= 4.0.5'
+  gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', "3.1.3"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -39,11 +39,10 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem "rspec-rails", ">= 2.8.0.rc1", :group => [:development, :test]
+gem "rspec-rails", '~> 3.7', '>= 3.7.2', :group => [:development, :test]
 gem "factory_girl_rails", ">= 1.4.0", :group => :test
-gem "devise", "1.5.3"
-gem "rails-footnotes", ">= 3.7", :group => :development
-gem 'acts-as-taggable-on', '~>2.2.0'
+gem "devise", "1.5.4"
+gem 'acts-as-taggable-on', '~>3.5.0'
 gem "heroku"
 gem 'thin'
 gem 'foreman'
