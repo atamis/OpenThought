@@ -30,7 +30,7 @@ class ThoughtsController < ApplicationController
     #@thought = Thought.new
     #@thought.body = request.body.read
     #@thought.user_id = current_user.id
-    @thought = Thought.new(params[:thought])
+    @thought = Thought.new(thought_params)
     @thought.user_id = current_user.id
     respond_to do |format|
       if @thought.save
@@ -53,5 +53,10 @@ class ThoughtsController < ApplicationController
       format.json { head :ok }
       format.xml { head :ok }
     end
+  end
+
+  private
+  def thought_params
+    params.require(:thought).permit(:body)
   end
 end

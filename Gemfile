@@ -19,11 +19,11 @@ end
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
+#group :assets do
   gem 'sass-rails', '~> 4.0', '>= 4.0.5'
   gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
   gem 'uglifier', '>= 1.0.3'
-end
+#end
 
 gem 'jquery-rails', "3.1.3"
 
@@ -41,7 +41,7 @@ gem 'jquery-rails', "3.1.3"
 
 gem "rspec-rails", '~> 3.7', '>= 3.7.2', :group => [:development, :test]
 gem "factory_girl_rails", ">= 1.4.0", :group => :test
-gem "devise", "1.5.4"
+gem "devise"
 gem 'acts-as-taggable-on', '~>3.5.0'
 gem "heroku"
 gem 'thin'
