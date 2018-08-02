@@ -4,7 +4,7 @@ HOST_OS = RbConfig::CONFIG['host_os']
 source 'http://rubygems.org'
 ruby "2.0.0"
 
-gem 'rails', '4.1.11'
+gem 'rails', '4.2.7.1'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
