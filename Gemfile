@@ -2,7 +2,7 @@ require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 
 source 'http://rubygems.org'
-ruby "2.0.0"
+ruby "2.1.0"
 
 gem 'rails', '4.2.7.1'
 
@@ -37,6 +37,7 @@ gem 'jquery-rails', "3.1.3"
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem "nokogiri", "~> 1.8.2"
 gem "rspec-rails", '~> 3.7', '>= 3.7.2', :group => [:development, :test]
 gem "factory_girl_rails", ">= 1.4.0", :group => :test
 gem "devise"
