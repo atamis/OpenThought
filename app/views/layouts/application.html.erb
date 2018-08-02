@@ -11,9 +11,9 @@
 
       <div class="row">
         <div class="col-md-2">
-            <h2>
-              <%= link_to "Openthought", "/", class: "navbar-brand"%>
-            </h2>
+            <h3>
+              <%= link_to "Openthought", "/"%>
+            </h3>
             <% if user_signed_in? %>
               <%= link_to current_user.email, edit_user_registration_path, class: "btn" %>
             <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "btn"%>
@@ -21,7 +21,9 @@
               <%= link_to "Sign up", new_user_registration_path, class: "btn" %>
             <%= link_to "Sign in", new_user_session_path, class: "btn" %>
           <% end %>
+          <hr />
           <%= yield :sidebar %>
+          <hr />
         </div>
         <div class="col-md-10">
           <% if notice %>

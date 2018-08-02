@@ -9,12 +9,10 @@ gem 'rails', '4.1.11'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-group :production do
-  gem 'pg'
-end
-group :development, :test do
-  gem 'sqlite3'
-end
+gem 'pg', "~> 0.15"
+#group :development, :test do
+  #gem 'sqlite3'
+#end
 
 
 # Gems used only for assets and not required
@@ -44,7 +42,7 @@ gem "factory_girl_rails", ">= 1.4.0", :group => :test
 gem "devise"
 gem 'acts-as-taggable-on', '~>3.5.0'
 gem "heroku"
-gem 'thin'
 gem 'foreman'
 gem 'redcarpet'
 gem 'kaminari'
+gem 'puma', '~> 3.4'
